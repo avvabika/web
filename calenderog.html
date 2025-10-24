@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Simple JS Calendar</title>
+  <style>
+    body { font-family: Arial; text-align: center; }
+    .month { display: inline-block; margin: 10px; border: 1px solid #aaa; padding: 5px; }
+    table { border-collapse: collapse; width: 200px; }
+    th, td { border: 1px solid #ccc; padding: 3px; text-align: center; width: 14%; }
+    th { background: #eee; }
+  </style>
+</head>
+<body>
+
+<h2>Calendar</h2>
+<div id="calendar"></div>
+
+<script>
+  let year = parseInt(prompt("Enter a year:"));
+  let months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  let days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+  let cal = document.getElementById("calendar");
+
+  for (let m = 0; m < 12; m++) {
+    let div = document.createElement("div");
+    div.className = "month";
+    let table = "<table><tr>" + days.map(d => `<th>${d}</th>`).join('') + "</tr><tr>";
+    let first = new Date(year, m, 1).getDay();
+    let total = new Date(year, m + 1, 0).getDate();
+
+    for (let i = 0; i < first; i++) table += "<td></td>";
+    for (let d = 1; d <= total; d++) {
+      table += `<td>${d}</td>`;
+      if ((d + first) % 7 === 0 && d !== total) table += "</tr><tr>";
+    }
+    table += "</tr></table>";
+
+    div.innerHTML = `<h4>${months[m]} ${year}</h4>${table}`;
+    cal.appendChild(div);
+  }
+</script>
+
+</body>
+</html>

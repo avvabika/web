@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>MCA Hover Example</title>
+        <style>
+            body{
+                text-align: center;
+                padding: 50px;
+            }
+            #content{
+                display: inline-block;
+                cursor: pointer;
+            }
+            img{
+                width: 300px;
+                height: 300px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="content" onmouseover="changeContent()" onmouseout="resetContent()">
+            <img id="image" src="https://via.placeholder.com/300" alt="Placeholder image">
+            <p id="text">Hover over me for MCA content!</p>
+        </div>
+        <script>
+            function changeContent(){
+                document.getElementById('image').src='mca.jpg';
+                document.getElementById('text').textContent='Master of Computer Applications(MCA) Content!';
+            }
+            function resetContent(){
+                document.getElementById('image').src='https://via.placeholder.com/300';
+                document.getElementById('text').textContent='Hover over me for MCA content!';
+            }
+        </script>
+    </body>
+</html>
